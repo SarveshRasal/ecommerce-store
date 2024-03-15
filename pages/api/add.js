@@ -7,7 +7,7 @@ export default async (req, res) => {
     try {
         const newTestDoc = new Test({
             name: 'John Doe',
-            email: 'john@example.com'
+            email: 'john@sucks'
         });
 
         await newTestDoc.save();
