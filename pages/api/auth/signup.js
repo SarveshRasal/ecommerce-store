@@ -7,7 +7,7 @@ export default async function handler(req, res){
         return res.status(405).json({message: 'Method Not Allowed'});
     }
 
-    const { name, email, password} = req.body;
+    const { name, email, password } = req.body;
 
     try {
         const db = await connectMongo();
@@ -30,6 +30,6 @@ export default async function handler(req, res){
         return res.status(201).json({message: 'User registered successfully'})
     } catch (error) {
         console.error('Error creating user: ', error);
-        return res.status(500).json({message: string(error)});
+        return res.status(500).json({message: error});
     }
 }
