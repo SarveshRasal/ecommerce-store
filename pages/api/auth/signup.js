@@ -1,31 +1,29 @@
 import connectMongo from "../../../utils/connectMongo";
-import  hash  from 'bcryptjs';
-import {string} from "zod";
+import  bcrypt  from 'bcryptjs';
+import User from "../../../models/userModel";
+import userModel from "../../../models/userModel";
 
 export default async function handler(req, res){
     if (req.method !== 'POST') {
         return res.status(405).json({message: 'Method Not Allowed'});
     }
 
-    const { name, email, password } = req.body;
-
     try {
-        const db = await connectMongo();
-
-        const existingUser = await db.collection('users').findOne({ email });
+        await connectMongo();
+        const {username, password, email, address} = req.body;
+        const hashedPassword = await bcrypt.hash(password, 12)
+        const newUser = new User({
+            username,
+            password: hashedPassword,
+            email,
+            address,
+        });
+        const existingUser = await userModel.exists({email: email});
         if (existingUser) {
             return res.status(400).json({message: 'User already exists'});
         }
 
-        const hashedPassword = await hash(password, 12);
-
-        const newUser = {
-            name,
-            email,
-            password: hashedPassword,
-        };
-
-        await db.collection('users').insertOne(newUser);
+        await newUser.save();
 
         return res.status(201).json({message: 'User registered successfully'})
     } catch (error) {
