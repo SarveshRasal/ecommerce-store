@@ -34,7 +34,7 @@ export default async function handler(req, res) {
             email: user.email
         };
 
-        const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "5d" });
+        const token = await jwt.sign(tokenData, "WGLbnl0rkSxNJTLZAW+TcqeU0Adz1pBRViuoLg5szQU=", { expiresIn: "5d" });
 
         console.log(token)
         console.log('Response Headers: ', res.getHeaders());
