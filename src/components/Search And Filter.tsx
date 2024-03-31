@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "@/components/Product Card";
-import product from "../../models/productModel";
+import product, {Product} from "../../models/productModel";
 
 const dark_green = '#40513B';
 
 export default function SearchAndFilter() {
     const [query, setQuery] = useState('');
     const [category, setCategory] = useState('All')
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState<Product[]>([]);
 
     const handleSearch = async () => {
         try {
@@ -58,10 +58,10 @@ export default function SearchAndFilter() {
                 {/* Product cards */}
                 {results.map(product => (
                     <ProductCard
-                        key={product._id}
-                        displayImage={product.ImageURL.toString()}
+                        key={product._id.toString()}
+                        displayImage={product.ImageURL[0]}
                         displayName={product.Name}
-                        displayPrice={product.Price}
+                        displayPrice={product.Price.toString()}
                     />
                 ))}
             </div>
