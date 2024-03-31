@@ -18,10 +18,9 @@ export default function ProductCard({displayImage, displayName, displayPrice} : 
                           className={'flex flex-col justify-between h-full'}
                           href={`/shop/${displayName}`}>
                         <div className={'rounded md'}>
-                            <Image src={displayImage}
+                            <Image src={'https://0vr2shuiv9jjog49.public.blob.vercel-storage.com/Rustic%20Wooden%20Barrel%20Planter-DszatqFfCoKhKuZF4dqf4IkM0308EY.png'}
                                    alt={'An Image of a Product'}
-                                   width={500} height={500}
-                                   layout={'responsive'}>
+                                   width={500} height={500} layout={'responsive'}>
                             </Image>
                         </div>
                         <div>
