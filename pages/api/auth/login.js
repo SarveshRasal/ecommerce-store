@@ -4,8 +4,6 @@ import connectMongo from "../../../utils/connectMongo";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import userModel from "../../../models/userModel";
-import { getCookies, setCookie } from "cookies-next";
-import {cookies} from "next/headers";
 
 connectMongo();
 
@@ -34,7 +32,9 @@ export default async function handler(req, res) {
             email: user.email
         };
 
-        const token = await jwt.sign(tokenData, "WGLbnl0rkSxNJTLZAW+TcqeU0Adz1pBRViuoLg5szQU=", { expiresIn: "5d" });
+        const token = await jwt.sign(tokenData,
+            "WGLbnl0rkSxNJTLZAW+TcqeU0Adz1pBRViuoLg5szQU=",
+            { expiresIn: "5d" });
 
         console.log(token)
         console.log('Response Headers: ', res.getHeaders());

@@ -14,7 +14,6 @@ export default async function handler(req, res) {
             if (!User) {
                 return res.status(404).json({ error: 'User not found' });
             }
-
             // Initialize cart if not already done
             if (!User.cart) {
                 User.cart = new Map();
@@ -32,6 +31,8 @@ export default async function handler(req, res) {
             console.log(error.message);
             return res.status(500).json({error: error.message})
         }
+    } else {
+        res.status(405).json({message: "Method Not Allowed"});
     }
 
 }
