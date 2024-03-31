@@ -25,6 +25,7 @@ export default function SearchAndFilter() {
         handleSearch();
     }, [category]);
 
+    // @ts-ignore
     return (
         <main>
             <div className={"grid grid-cols-4"}>
