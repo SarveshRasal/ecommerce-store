@@ -8,7 +8,7 @@ import userModel from "../../../models/userModel";
 connectMongo();
 
 export default async function handler(req, res) {
-    if (req.method !== 'GET') {
+    if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
@@ -35,11 +35,6 @@ export default async function handler(req, res) {
         const token = await jwt.sign(tokenData,
             "WGLbnl0rkSxNJTLZAW+TcqeU0Adz1pBRViuoLg5szQU=",
             { expiresIn: "5d" });
-
-        console.log(token)
-        console.log('Response Headers: ', res.getHeaders());
-
-        res.setHeader('Set-Cookie', `sessionToken=${token}; HttpOnly; Secure; SameSite=Strict`);
 
         return res.status(200).json({ message: 'Login Successful', success: true });
     } catch (error) {

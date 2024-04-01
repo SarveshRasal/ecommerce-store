@@ -15,7 +15,7 @@ export default function NavBar({displayHome} : NavBarProps) {
                 <a href={'/'} className={`font-bold ${dark_green} text-3xl justify-center items-center inline-flex h-[6.75vh]`}>Aether Emporium</a>
             </div>)}
             <div>
-                <a href={'/Sign In'} className={`inline-flex w-[12.5vw] ${dark_green} justify-center h-[6.75vh] items-center border-[1px] border-[#40513B]`}>Sign In</a>
+                <a href={'/signin'} className={`inline-flex w-[12.5vw] ${dark_green} justify-center h-[6.75vh] items-center border-[1px] border-[#40513B]`}>Sign In</a>
                 <a href={'/Cart'} className={`inline-flex w-[12.5vw] ${dark_green} justify-center h-[6.75vh] items-center border-[1px] border-[#40513B] border-l-0`}>Cart</a>
             </div>
         </header>
